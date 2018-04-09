@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Student Records</title>
+
+        <style>
+            * {
+                margin: 0 auto;
+            }
+
+            body {
+                color: #1B3427;
+                max-width: 700px;
+            }
+
+            h2 {
+                width: 170px;
+                margin: 20px auto;
+            }
+
+            form {
+                max-width: 200px;
+                border: 2px solid #273927;
+                padding: 30px;
+                margin: 30px auto;
+            }
+
+            .actions {
+                margin: 30px auto;
+            }
+            .sortbtn-content {
+                display: none;
+            }
+
+            table, th {
+                border: 2px solid #273927;
+                padding: 5px;
+            }
+
+            tr, td {
+                border: 1px solid #6D937D;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <h2>Student Records</h2>
+
+            <form>
+                <p>Please enter the details below.</p>
+                <br />
+
+                <label for="fname">First Name:</label><br />
+                <input type="text" name="fname" placeholder="First Name"/><br />
+                <br />
+
+                <label for="lname">Last Name:</label><br />
+                <input type="text" name="lname" placeholder="Last Name"/><br />
+                <br />
+
+                <label for="gender">Gender at Birth:</label><br />
+                <input type="text" name="gender" placeholder="Gender"/><br />
+                <br />
+
+                <label for="dob">Date of Birth:</label><br />
+                <input type="text" name="dob" placeholder="Date of Birth"/><br />
+                <br />
+
+                <label for="age">Age:</label><br />
+                <input type="text" name="age" placeholder="Age"/><br />
+                <br />
+
+                <label for="username">Username:</label><br />
+                <input type="text" name="username" placeholder="Username"/><br />  
+                
+                <button type="submit">Submit</button>
+            </form>
+
+            <div class="actions">
+                <div class="sort-by">
+                    <button class="sortbtn">Sort by...</button>
+                    <div class="sortbtn-content">
+                        <a>First Name</a>
+                        <a>Last Name</a>
+                        <a>Gender Name</a>
+                        <a>Age Name</a>
+                        <a>Username</a>
+                    </div>
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>Age</th>
+                    <th>Username</th>
+                </tr>
+
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Gender</td>
+                    <td>Date of Birth</td>
+                    <td>Age</td>
+                    <td>Username</td>
+                </tr>
+
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Gender</td>
+                    <td>Date of Birth</td>
+                    <td>Age</td>
+                    <td>Username</td>
+                </tr>
+            </table>
+        </main>
+
+    </body>
+</html>
