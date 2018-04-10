@@ -4,53 +4,17 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Student Records</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css" />
 
-        <style>
-            * {
-                margin: 0 auto;
-            }
-
-            body {
-                color: #1B3427;
-                max-width: 700px;
-            }
-
-            h2 {
-                width: 170px;
-                margin: 20px auto;
-            }
-
-            form {
-                max-width: 200px;
-                border: 2px solid #273927;
-                padding: 30px;
-                margin: 30px auto;
-            }
-
-            .actions {
-                margin: 30px auto;
-            }
-            .sortbtn-content {
-                display: none;
-            }
-
-            table, th {
-                border: 2px solid #273927;
-                padding: 5px;
-            }
-
-            tr, td {
-                border: 1px solid #6D937D;
-            }
-
-        </style>
+        
     </head>
 
     <body>
         <main>
             <h2>Student Records</h2>
 
-            <form>
+            <form class="student_input">
                 <p>Please enter the details below.</p>
                 <br />
 
@@ -91,6 +55,14 @@
                         <a>Username</a>
                     </div>
                 </div>
+
+                <div class="search__container">
+                    <form class="search-box">
+                        <input type="text" placeholder="Search..." name="search"/>
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+
+                </div>
             </div>
             
             <table>
@@ -101,24 +73,98 @@
                     <th>Date of Birth</th>
                     <th>Age</th>
                     <th>Username</th>
+                    <th><button><i class="fa fa-trash" aria-hidden="true"> (All)</button></th>
                 </tr>
 
                 <tr>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Gender</td>
-                    <td>Date of Birth</td>
-                    <td>Age</td>
-                    <td>Username</td>
+                    <td>First Name
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Last Name
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Gender
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Date of Birth
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Age
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Username
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>
+                        <button>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Gender</td>
-                    <td>Date of Birth</td>
-                    <td>Age</td>
-                    <td>Username</td>
+                    <td>
+                        <form>
+                            <input type="text" value="First Name"/>
+                            <button>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>Last Name
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Gender
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Date of Birth
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Age
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>Username
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                    <td>
+                        <button>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
                 </tr>
             </table>
         </main>

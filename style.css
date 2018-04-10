@@ -1,0 +1,79 @@
+* {
+  margin: 0 auto;
+}
+
+body {
+  color: #1B3427;
+  max-width: 900px;
+}
+
+h2 {
+  width: 170px;
+  margin: 20px auto;
+}
+
+/* Add Student Data */
+.student_input {
+  line-height: 1.5em;
+  max-width: 200px;
+  border: 2px solid #273927;
+  padding: 30px;
+  margin: 30px auto;
+}
+
+button {
+  margin: 10px 0;
+}
+
+/* Actions */
+.actions {
+  border: 1px solid #6D937D;
+  display: flex;
+  padding: 10px;
+  margin: 30px auto;
+}
+.sortbtn-content {
+  display: none;
+}
+
+.search__container {
+  width: 205px;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+}
+
+.search-box input {
+  padding-left: 10px;
+  margin: 0;
+}
+
+.search-box button {
+  margin-left: -1px;
+}
+
+/* Student Records Table */
+table {
+  width: 100%;
+  border: 2px solid #273927;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+}
+
+th {
+  padding: 5px 20px;
+  border: 2px solid #273927;
+}
+
+th:last-child {
+  padding: 5px;
+}
+
+tr, td {
+  border: 1px solid #6D937D;
+  padding: 0 10px;
+}
