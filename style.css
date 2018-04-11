@@ -69,6 +69,11 @@ table {
   margin: 0;
 }
 
+table input {
+  width: 100px;
+  color: #6D937D;
+}
+
 th {
   padding: 5px 20px;
   border: 2px solid #273927;
@@ -80,5 +85,5 @@ th:last-child {
 
 tr, td {
   border: 1px solid #6D937D;
-  padding: 0 10px;
+  padding: 5px 10px;
 }

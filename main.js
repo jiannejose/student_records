@@ -9,21 +9,12 @@ let dobInput = document.getElementById('dobInput');
 let ageInput = document.getElementById('ageInput');
 let usernameInput = document.getElementById('usernameInput');
 
+
 firstNameInput.focus();
 
 studentForm.addEventListener('submit', addStudent);
 
-class Student {
-  constructor(id, firstName, lastName, gender, dob, age, username) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.gender = gender;
-    this.dob = dob;
-    this.age = age;
-    this.username = username;
-  }
-}
+/* ADDING STUDENT DATA */
 
 function addStudent(e) {
   e.preventDefault();
@@ -43,9 +34,48 @@ function addStudent(e) {
     });
 
   resetSelectOption();
+  
+  let dataIndex = allStudents.findIndex((student) => student.id == nextId );
+  renderStudentData(allStudents[dataIndex]);
   nextId++
 }
 
+/* resetting select option to default */
 function resetSelectOption() {
   document.getElementById('genderInput').selectedIndex = 0;
+}
+
+let studentsTable = document.querySelector('.js-students_table');
+
+function renderStudentData(student) {
+  let newTr = document.createElement('tr');
+  newTr.setAttribute('data-id', student.id);
+
+  newTr.innerHTML = studentDataFormat(student);
+  studentsTable.appendChild(newTr);
+}
+
+function studentDataFormat(student) {
+  return `
+    <td>${student.firstName}</td>
+
+    <td>${student.lastName}</td>
+
+    <td>${student.gender}</td>
+
+    <td>${student.dob}</td>
+
+    <td>${student.age}</td>
+
+    <td>${student.username}</td>
+
+    <td>
+        <button>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+        <button>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+    </td>
+  `;  
 }

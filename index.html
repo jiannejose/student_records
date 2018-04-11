@@ -47,7 +47,7 @@
                 <button type="submit">Submit</button>
             </form>
 
-            <div class="actions">
+            <!-- <div class="actions">
                 <div class="sort-by">
                     <button class="sortbtn">Sort by...</button>
                     <div class="sortbtn-content">
@@ -66,9 +66,9 @@
                     </form>
 
                 </div>
-            </div>
+            </div> -->
             
-            <table>
+            <table class="js-students_table">
                 <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -76,49 +76,28 @@
                     <th>Date of Birth</th>
                     <th>Age</th>
                     <th>Username</th>
-                    <th><button><i class="fa fa-trash" aria-hidden="true"> (All)</button></th>
+                    <th><i class="fa fa-trash" aria-hidden="true"> <i class="fa fa-pencil" aria-hidden="true"></i></th>
                 </tr>
 
                 <tr>
-                    <td>First Name
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                    <td>First Name</td>
 
-                    <td>Last Name
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                    <td>Last Name</td>
 
-                    <td>Gender
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                    <td>Gender</td>
 
-                    <td>Date of Birth
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                    <td>Date of Birth</td>
 
-                    <td>Age
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                    <td>Age</td>
 
-                    <td>Username
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                    <td>Username</td>
 
                     <td>
                         <button>
                             <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                        <button>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
                     </td>
                 </tr>
@@ -127,51 +106,52 @@
                     <td>
                         <form>
                             <input type="text" value="First Name"/>
-                            <button>
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                            </button>
                         </form>
                     </td>
 
-                    <td>Last Name
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
+                    <td>
+                        <form>
+                            <input type="text" value="Last Name"/>
+                        </form>
                     </td>
 
-                    <td>Gender
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
+                    <td>
+                        <form>
+                            <input type="text" value="Gender"/>
+                        </form>
                     </td>
 
-                    <td>Date of Birth
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
+                    <td>
+                        <form>
+                            <input type="text" value="dob"/>
+                        </form>
                     </td>
 
-                    <td>Age
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
+                    <td>
+                        <form>
+                            <input type="text" value="age"/>
+                        </form>
                     </td>
 
-                    <td>Username
-                        <button>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
+                    <td>
+                        <form>
+                            <input type="text" value="username"/>
+                        </form>
                     </td>
 
                     <td>
                         <button>
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
+                        <button>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </button>
                     </td>
                 </tr>
             </table>
         </main>
 
+        <script src="Student.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
