@@ -6,40 +6,43 @@
         <title>Student Records</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css" />
-
-        
     </head>
 
     <body>
         <main>
             <h2>Student Records</h2>
 
-            <form class="student_input">
+            <form class="student_input js-student_form">
                 <p>Please enter the details below.</p>
                 <br />
 
                 <label for="fname">First Name:</label><br />
-                <input type="text" name="fname" placeholder="First Name"/><br />
+                <input type="text" name="fname" placeholder="First Name" autocomplete="off" id="fNameInput"/><br />
                 <br />
 
                 <label for="lname">Last Name:</label><br />
-                <input type="text" name="lname" placeholder="Last Name"/><br />
+                <input type="text" name="lname" placeholder="Last Name" autocomplete="off" id="lNameInput"/><br />
                 <br />
 
                 <label for="gender">Gender at Birth:</label><br />
-                <input type="text" name="gender" placeholder="Gender"/><br />
+                <select type="text" name="gender" placeholder="Gender" autocomplete="off" id="genderInput"/>
+                    <option value="default">Select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <br />
                 <br />
 
                 <label for="dob">Date of Birth:</label><br />
-                <input type="text" name="dob" placeholder="Date of Birth"/><br />
+                <input type="date" name="dob" placeholder="Date of Birth" autocomplete="off" id="dobInput"/><br />
                 <br />
 
                 <label for="age">Age:</label><br />
-                <input type="text" name="age" placeholder="Age"/><br />
+                <input type="number" name="age" placeholder="Age" autocomplete="off" id="ageInput"/><br />
                 <br />
 
                 <label for="username">Username:</label><br />
-                <input type="text" name="username" placeholder="Username"/><br />  
+                <input type="text" name="username" placeholder="Username" autocomplete="off" id="usernameInput"/><br />  
                 
                 <button type="submit">Submit</button>
             </form>
@@ -169,5 +172,6 @@
             </table>
         </main>
 
+        <script src="main.js"></script>
     </body>
 </html>
