@@ -21,11 +21,6 @@ h2 {
   margin: 30px auto;
 }
 
-#fNameInput,
-#lNameInput {
-  text-transform: capitalize;
-}
-
 .student_input button {
   margin: 10px 0;
 }

@@ -9,12 +9,13 @@ let dobInput = document.getElementById('dobInput');
 let ageInput = document.getElementById('ageInput');
 let usernameInput = document.getElementById('usernameInput');
 
+let studentsTable = document.querySelector('.js-students_table');
 
 firstNameInput.focus();
 
 studentForm.addEventListener('submit', addStudent);
 
-/* ADDING STUDENT DATA */
+/* ADDING STUDENT DATA START */
 
 function addStudent(e) {
   e.preventDefault();
@@ -38,15 +39,16 @@ function addStudent(e) {
   let dataIndex = allStudents.findIndex((student) => student.id == nextId );
   renderStudentData(allStudents[dataIndex]);
   nextId++
+
+  firstNameInput.focus();
 }
 
-/* resetting select option to default */
+/* reset select option to default */
 function resetSelectOption() {
   document.getElementById('genderInput').selectedIndex = 0;
 }
 
-let studentsTable = document.querySelector('.js-students_table');
-
+/* render student data on the table */
 function renderStudentData(student) {
   let newTr = document.createElement('tr');
   newTr.setAttribute('data-id', student.id);
@@ -55,13 +57,19 @@ function renderStudentData(student) {
   studentsTable.appendChild(newTr);
 }
 
+/*capitalize names when rendered */
+function capitalize(string) {
+  return `${string.charAt(0).toUpperCase()}${string.slice(1)} `;
+}
+
+/* student data format when rendered */
 function studentDataFormat(student) {
   return `
-    <td>${student.firstName}</td>
+    <td>${capitalize(student.firstName)}</td>
 
-    <td>${student.lastName}</td>
+    <td>${capitalize(student.lastName)}</td>
 
-    <td>${student.gender}</td>
+    <td>${capitalize(student.gender)}</td>
 
     <td>${student.dob}</td>
 
@@ -79,3 +87,6 @@ function studentDataFormat(student) {
     </td>
   `;  
 }
+/* ADDING STUDENT DATA END */
+
+
