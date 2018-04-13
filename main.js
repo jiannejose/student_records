@@ -38,6 +38,7 @@ function addStudent(e) {
   
   let dataIndex = allStudents.findIndex((student) => student.id == nextId );
   renderStudentData(allStudents[dataIndex]);
+
   nextId++
 
   firstNameInput.focus();
@@ -55,6 +56,8 @@ function renderStudentData(student) {
 
   newTr.innerHTML = studentDataFormat(student);
   studentsTable.appendChild(newTr);
+
+  rebindButtons(newTr);
 }
 
 /*capitalize names when rendered */
@@ -66,19 +69,14 @@ function capitalize(string) {
 function studentDataFormat(student) {
   return `
     <td>${capitalize(student.firstName)}</td>
-
     <td>${capitalize(student.lastName)}</td>
-
     <td>${capitalize(student.gender)}</td>
-
     <td>${student.dob}</td>
-
     <td>${student.age}</td>
-
     <td>${student.username}</td>
 
     <td>
-        <button>
+        <button class="delete-btn">
             <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
         <button>
@@ -89,4 +87,22 @@ function studentDataFormat(student) {
 }
 /* ADDING STUDENT DATA END */
 
+
+function rebindButtons(element) {
+  let deleteButton = element.querySelector('.delete-btn');
+
+  deleteButton.addEventListener('click', deleteStudent);
+}
+
+
+/* DELETING STUDENT START*/
+function deleteStudent() {
+  let grandparentElement = this.parentElement.parentElement;
+  let studentId = grandparentElement.getAttribute('data-id');
+  let dataIndex = allStudents.findIndex((student) => student.id == studentId);
+
+  allStudents.splice(dataIndex, 1);
+  grandparentElement.remove();
+
+}
 
