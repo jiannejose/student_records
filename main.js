@@ -79,7 +79,7 @@ function studentDataFormat(student) {
         <button class="delete-btn">
             <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
-        <button>
+        <button class="edit-btn">
             <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
     </td>
@@ -87,13 +87,22 @@ function studentDataFormat(student) {
 }
 /* ADDING STUDENT DATA END */
 
-
+/* rebinding buttons */
 function rebindButtons(element) {
   let deleteButton = element.querySelector('.delete-btn');
+  let editButton = element.querySelector('.edit-btn');
+  let doneButton = element.querySelector('.done-btn');
 
   deleteButton.addEventListener('click', deleteStudent);
-}
 
+  if(editButton) {
+    editButton.addEventListener('click', editStudentData);
+  }
+
+  if(doneButton) {
+    doneButton.addEventListener('click', doneEditing);
+  }
+}
 
 /* DELETING STUDENT START*/
 function deleteStudent() {
@@ -103,6 +112,67 @@ function deleteStudent() {
 
   allStudents.splice(dataIndex, 1);
   grandparentElement.remove();
+}
+/* DELETING STUDENT END */
 
+/* EDITING STUDENT DATA START */
+function editDataFormat(student) {
+  return `
+    <td>
+        <form>
+            <input type="text" value="${capitalize(student.firstName)}" class="edit_first-name"/>
+        </form>
+    </td>
+
+    <td>
+        <form>
+            <input type="text" value="${capitalize(student.lastName)}"/>
+        </form>
+    </td>
+
+    <td>
+        <form>
+            <input type="text" value="${capitalize(student.gender)}"/>
+        </form>
+    </td>
+
+    <td>
+        <form>
+            <input type="text" value="${student.dob}"/>
+        </form>
+    </td>
+
+    <td>
+        <form>
+            <input type="text" value="${student.age}"/>
+        </form>
+    </td>
+
+    <td>
+        <form>
+            <input type="text" value="${student.username}"/>
+        </form>
+    </td>
+
+    <td>
+        <button class="delete-btn">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+        <button class="done-btn">
+            <i class="fa fa-check" aria-hidden="true"></i>
+        </button>
+    </td>
+  `;
 }
 
+function editStudentData() {
+  let grandparentElement = this.parentElement.parentElement;
+  let studentId = grandparentElement.getAttribute('data-id');
+  let dataIndex = allStudents.findIndex((student) => student.id == studentId);
+
+  grandparentElement.innerHTML = editDataFormat(allStudents[dataIndex]);
+
+  let editFirstNameInput = grandparentElement.querySelector('.edit_first-name');
+  
+  editFirstNameInput.focus();
+}
