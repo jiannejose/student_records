@@ -91,7 +91,6 @@ function studentDataFormat(student) {
 function rebindButtons(element) {
   let deleteButton = element.querySelector('.delete-btn');
   let editButton = element.querySelector('.edit-btn');
-  let doneButton = element.querySelector('.done-btn');
 
   deleteButton.addEventListener('click', deleteStudent);
 
@@ -99,9 +98,6 @@ function rebindButtons(element) {
     editButton.addEventListener('click', editStudentData);
   }
 
-  if(doneButton) {
-    doneButton.addEventListener('click', doneEditing);
-  }
 }
 
 /* DELETING STUDENT START*/
@@ -120,37 +116,41 @@ function editDataFormat(student) {
   return `
     <td>
         <form>
-            <input type="text" value="${capitalize(student.firstName)}" class="edit_first-name"/>
+            <input type="text" value="${capitalize(student.firstName)}" class="edit_fname"/>
         </form>
     </td>
 
     <td>
         <form>
-            <input type="text" value="${capitalize(student.lastName)}"/>
+            <input type="text" value="${capitalize(student.lastName)}" class="edit_lname"/>
         </form>
     </td>
 
     <td>
         <form>
-            <input type="text" value="${capitalize(student.gender)}"/>
+            <select type="text" name="gender" class="edit_gender"/>
+                <option value="default">Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
         </form>
     </td>
 
     <td>
         <form>
-            <input type="text" value="${student.dob}"/>
+            <input type="date" value="${student.dob}" class="edit_dob"/>
         </form>
     </td>
 
     <td>
         <form>
-            <input type="text" value="${student.age}"/>
+            <input type="text" value="${student.age}" class="edit_age"/>
         </form>
     </td>
 
     <td>
         <form>
-            <input type="text" value="${student.username}"/>
+            <input type="text" value="${student.username}" class="edit_username"/>
         </form>
     </td>
 
@@ -158,7 +158,7 @@ function editDataFormat(student) {
         <button class="delete-btn">
             <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
-        <button class="done-btn">
+        <button class="update-btn">
             <i class="fa fa-check" aria-hidden="true"></i>
         </button>
     </td>
@@ -172,7 +172,37 @@ function editStudentData() {
 
   grandparentElement.innerHTML = editDataFormat(allStudents[dataIndex]);
 
-  let editFirstNameInput = grandparentElement.querySelector('.edit_first-name');
+  let editFirstNameInput = grandparentElement.querySelector('.edit_fname');
   
   editFirstNameInput.focus();
+  
+  let updateButton = grandparentElement.querySelector('.update-btn');
+  updateButton.addEventListener('click', updateStudentData);
+}
+/* EDITING STUDENT DATA END */
+
+
+/* SAVING EDITED STUDENT DATA START */
+function updateStudentData() {
+  let grandparentElement = this.parentElement.parentElement;
+  let studentId = grandparentElement.getAttribute('data-id');
+  let dataIndex = allStudents.findIndex((student) => student.id == studentId );
+
+  let newFirstName = grandparentElement.querySelector('.edit_fname').value;
+  let newLastName = grandparentElement.querySelector('.edit_lname').value;
+  let newGender = grandparentElement.querySelector('.edit_gender').value;
+  let newDob = grandparentElement.querySelector('.edit_dob').value;
+  let newAge = grandparentElement.querySelector('.edit_age').value;
+  let newUsername = grandparentElement.querySelector('.edit_username').value;
+
+  allStudents[dataIndex].firstName = newFirstName;
+  allStudents[dataIndex].lastName = newLastName;
+  allStudents[dataIndex].gender = newGender;
+  allStudents[dataIndex].dob = newDob;
+  allStudents[dataIndex].age = newAge;
+  allStudents[dataIndex].username = newUsername;
+
+  grandparentElement.innerHTML = studentDataFormat(allStudents[dataIndex]);
+
+  rebindButtons(grandparentElement);
 }
