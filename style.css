@@ -27,17 +27,20 @@ h2 {
 
 /* Actions */
 .actions {
-  border: 1px solid #6D937D;
   display: flex;
   padding: 10px;
   margin: 30px auto;
 }
-.sortbtn-content {
+.sort_categories {
   display: none;
 }
 
+.sort_categories--show {
+  display: block;
+}
+
 .search__container {
-  width: 205px;
+  width: 212px;
 }
 
 .search-box {

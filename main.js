@@ -130,8 +130,8 @@ function editDataFormat(student) {
         <form>
             <select type="text" name="gender" class="edit_gender"/>
                 <option value="default">Select...</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="male" ${ student.gender == 'male' ? 'selected="selected"' : '' }>Male</option>
+                <option value="female" ${ student.gender == 'female' ? 'selected="selected"' : '' }>Female</option>
             </select>
         </form>
     </td>
@@ -205,4 +205,15 @@ function updateStudentData() {
   grandparentElement.innerHTML = studentDataFormat(allStudents[dataIndex]);
 
   rebindButtons(grandparentElement);
+}
+
+/* SORTING STUDENTS RECORDS */
+let sortButton = document.querySelector('.sortbtn');
+
+sortButton.addEventListener('click', selectSortCategory);
+
+function selectSortCategory() {
+  let sortCategories = document.querySelector('.sort_categories');
+  sortCategories.classList.remove('sort_categories');
+  sortCategories.classList.add('sort_categories--show');
 }
