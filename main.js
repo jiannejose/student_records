@@ -225,12 +225,16 @@ function sortByCategories() {
   let sortByFirstNameBtn = document.getElementById('sortby_fname');
   let sortByLastNameBtn = document.getElementById('sortby_lname');
   let sortByGenderBtn = document.getElementById('sortby_gender');
-  let sortByDob = document.getElementById('sort_dob');
+  let sortByDobBtn = document.getElementById('sort_dob');
   let sortByAgeBtn = document.getElementById('sortby_age');
   let sortByUsernameBtn = document.getElementById('sortby_username');
 
   sortByFirstNameBtn.addEventListener('click', sortByFirstName);
   sortByLastNameBtn.addEventListener('click', sortByLastName);
+  // sortByGenderBtn.addEventListener('click', sortByGender);
+  // sortByDobBtn.addEventListener('click', sortByDob);
+  sortByAgeBtn.addEventListener('click', sortByAge);
+  sortByUsernameBtn.addEventListener('click', sortByUsername);
 }
 
 /* sorting by first name */
@@ -272,6 +276,48 @@ function sortByLastName() {
 
   sortedByLastNames.forEach((student) => {
     renderStudentData(student)
+  });
+}
+
+/* sorting by age */
+function sortByAge() {
+  let studentsList = allStudents.slice(0);
+
+  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+    return currentStudent.age > nextStudent.age;
+  });
+
+  let sortedByAge = [];
+
+  sortedStudentsList.forEach((student) => {
+    sortedByAge.push(student);
+  });
+
+  studentsTable.innerHTML = '';
+
+  sortedByAge.forEach((student) => {
+    renderStudentData(student);
+  });
+}
+
+/* sorting by username */
+function sortByUsername() {
+  let studentsList = allStudents.slice(0);
+
+  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+    return currentStudent.username > nextStudent.username;
+  });
+
+  let sortedByUsername = [];
+
+  sortedStudentsList.forEach((student) => {
+    sortedByUsername.push(student);
+  });
+
+  studentsTable.innerHTML = '';
+
+  sortedByUsername.forEach((student) => {
+    renderStudentData(student);
   });
 }
 
