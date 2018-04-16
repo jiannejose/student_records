@@ -97,7 +97,6 @@ function rebindButtons(element) {
   if(editButton) {
     editButton.addEventListener('click', editStudentData);
   }
-
 }
 
 /* DELETING STUDENT START*/
@@ -206,14 +205,89 @@ function updateStudentData() {
 
   rebindButtons(grandparentElement);
 }
+/* SAVING EDITED STUDENT DATA END */
 
-/* SORTING STUDENTS RECORDS */
+/* SORTING STUDENTS RECORDS START*/
 let sortButton = document.querySelector('.sortbtn');
 
 sortButton.addEventListener('click', selectSortCategory);
 
 function selectSortCategory() {
   let sortCategories = document.querySelector('.sort_categories');
-  sortCategories.classList.remove('sort_categories');
-  sortCategories.classList.add('sort_categories--show');
+  sortCategories.classList.toggle('sort_categories--show');
+
+  if(sortCategories.classList.contains('sort_categories--show')) {
+    sortByCategories();
+  } 
 }
+
+function sortByCategories() {
+  let sortByFirstNameBtn = document.getElementById('sortby_fname');
+  let sortByLastNameBtn = document.getElementById('sortby_lname');
+  let sortByGenderBtn = document.getElementById('sortby_gender');
+  let sortByDob = document.getElementById('sort_dob');
+  let sortByAgeBtn = document.getElementById('sortby_age');
+  let sortByUsernameBtn = document.getElementById('sortby_username');
+
+  sortByFirstNameBtn.addEventListener('click', sortByFirstName);
+}
+
+/* sorting by first name */
+function sortByFirstName() {
+  let studentsList = allStudents.slice(0);
+
+  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+    return currentStudent.firstName > nextStudent.firstName;
+  });
+
+  let sortedByFirstNames = [];
+
+  sortedStudentsList.forEach((firstName) => {
+    sortedByFirstNames.push(firstName);
+  });
+
+  studentsTable.innerHTML = '';
+
+  sortedByFirstNames.forEach((student) => {
+    renderStudentData(student);
+  });
+  
+}
+
+
+
+
+
+
+
+function addTestData(firstName, lastName, gender, dob, age, username) {
+  allStudents.push({
+    id: nextId,
+    firstName: firstName,
+    lastName: lastName,
+    gender: gender,
+    dob: dob,
+    age: age,
+    username: username,
+  });
+
+  let dataIndex = allStudents.findIndex((student) => student.id ==  nextId);
+  renderTestData(allStudents[dataIndex]);
+  nextId++;
+}
+
+function renderTestData(student) {
+  let newTr = document.createElement('tr');
+  newTr.setAttribute('data-id', student.id);
+
+  newTr.innerHTML = studentDataFormat(student);
+  studentsTable.appendChild(newTr);
+
+  rebindButtons(newTr);
+}
+
+addTestData('Hermione', 'Granger', 'female', '1991-03-28', 27, 'wingardium' );
+addTestData('Harry', 'Potter', 'male', '1989-01-28', 29, 'avada' );
+addTestData('Ron', 'Weasley', 'male', '1991-05-28', 28, 'quiditch' );
+addTestData('Anne', 'Jose', 'female', '1991-12-03', 26, 'jianne' );
+addTestData('Ron', 'Cabal', 'male', '1992-06-13', 25, 'ronron' );
