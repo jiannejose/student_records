@@ -230,6 +230,7 @@ function sortByCategories() {
   let sortByUsernameBtn = document.getElementById('sortby_username');
 
   sortByFirstNameBtn.addEventListener('click', sortByFirstName);
+  sortByLastNameBtn.addEventListener('click', sortByLastName);
 }
 
 /* sorting by first name */
@@ -242,8 +243,8 @@ function sortByFirstName() {
 
   let sortedByFirstNames = [];
 
-  sortedStudentsList.forEach((firstName) => {
-    sortedByFirstNames.push(firstName);
+  sortedStudentsList.forEach((student) => {
+    sortedByFirstNames.push(student);
   });
 
   studentsTable.innerHTML = '';
@@ -251,10 +252,28 @@ function sortByFirstName() {
   sortedByFirstNames.forEach((student) => {
     renderStudentData(student);
   });
-  
 }
 
+/* sorting by last name */
+function sortByLastName() {
+  let studentsList = allStudents.slice(0);
 
+  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+    return currentStudent.lastName > nextStudent.lastName;
+  });
+
+  let sortedByLastNames = [];
+
+  sortedStudentsList.forEach((student) => {
+    sortedByLastNames.push(student);
+  });
+
+  studentsTable.innerHTML = '';
+
+  sortedByLastNames.forEach((student) => {
+    renderStudentData(student)
+  });
+}
 
 
 
