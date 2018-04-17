@@ -27,7 +27,7 @@ function addStudent(e) {
   let age = ageInput.value;
   let username = usernameInput.value;
 
-  allStudents.push(new Student(nextId, firstName, lastName, gender, dob, age, username));
+  allStudents.push(new Student(nextId, firstName, lastName, gender, new Date(dob), age, username));
 
   let inputFields = Array.from(studentForm.getElementsByTagName('input'));
     inputFields.forEach((input) => {
@@ -42,6 +42,22 @@ function addStudent(e) {
   nextId++
 
   firstNameInput.focus();
+}
+
+/* format date */
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return `${monthNames[monthIndex]} ${day}, ${year}`;
 }
 
 /* reset select option to default */
@@ -71,7 +87,7 @@ function studentDataFormat(student) {
     <td>${capitalize(student.firstName)}</td>
     <td>${capitalize(student.lastName)}</td>
     <td>${capitalize(student.gender)}</td>
-    <td>${student.dob}</td>
+    <td>${formatDate(student.dob)}</td>
     <td>${student.age}</td>
     <td>${student.username}</td>
 
@@ -137,7 +153,7 @@ function editDataFormat(student) {
 
     <td>
         <form>
-            <input type="date" value="${student.dob}" class="edit_dob"/>
+            <input type="date" value="${formatDate(student.dob)}" class="edit_dob"/>
         </form>
     </td>
 
@@ -224,15 +240,13 @@ function selectSortCategory() {
 function sortByCategories() {
   let sortByFirstNameBtn = document.getElementById('sortby_fname');
   let sortByLastNameBtn = document.getElementById('sortby_lname');
-  let sortByGenderBtn = document.getElementById('sortby_gender');
-  let sortByDobBtn = document.getElementById('sort_dob');
+  let sortByDobBtn = document.getElementById('sortby_dob');
   let sortByAgeBtn = document.getElementById('sortby_age');
   let sortByUsernameBtn = document.getElementById('sortby_username');
 
   sortByFirstNameBtn.addEventListener('click', sortByFirstName);
   sortByLastNameBtn.addEventListener('click', sortByLastName);
-  // sortByGenderBtn.addEventListener('click', sortByGender);
-  // sortByDobBtn.addEventListener('click', sortByDob);
+  sortByDobBtn.addEventListener('click', sortByDob);
   sortByAgeBtn.addEventListener('click', sortByAge);
   sortByUsernameBtn.addEventListener('click', sortByUsername);
 }
@@ -276,6 +290,25 @@ function sortByLastName() {
 
   sortedByLastNames.forEach((student) => {
     renderStudentData(student)
+  });
+}
+
+/* sorting by date of birth */
+function sortByDob() {
+  let studentsList = allStudents.slice(0);
+
+  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => currentStudent.dob > nextStudent.dob);
+
+  let sortedByDob = [];
+
+  sortedStudentsList.forEach((student) => {
+    sortedByDob.push(student);
+  });
+
+  studentsTable.innerHTML = '';
+
+  sortedByDob.forEach((student) => {
+    renderStudentData(student);
   });
 }
 
@@ -351,8 +384,8 @@ function renderTestData(student) {
   rebindButtons(newTr);
 }
 
-addTestData('Hermione', 'Granger', 'female', '1991-03-28', 27, 'wingardium' );
-addTestData('Harry', 'Potter', 'male', '1989-01-28', 29, 'avada' );
-addTestData('Ron', 'Weasley', 'male', '1991-05-28', 28, 'quiditch' );
-addTestData('Anne', 'Jose', 'female', '1991-12-03', 26, 'jianne' );
-addTestData('Ron', 'Cabal', 'male', '1992-06-13', 25, 'ronron' );
+addTestData('Hermione', 'Granger', 'female', new Date('1991-03-28'), 27, 'wingardium' );
+addTestData('Harry', 'Potter', 'male', new Date('1989-01-28'), 29, 'avada' );
+addTestData('Ron', 'Weasley', 'male', new Date('1991-05-28'), 28, 'quiditch' );
+addTestData('Anne', 'Jose', 'female', new Date('1991-12-03'), 26, 'jianne' );
+addTestData('Ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
