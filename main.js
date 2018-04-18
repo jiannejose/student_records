@@ -11,6 +11,8 @@ let usernameInput = document.getElementById('usernameInput');
 
 let studentsTable = document.querySelector('.js-students_table');
 
+let sortType = 'ascending';
+
 firstNameInput.focus();
 
 studentForm.addEventListener('submit', addStudent);
@@ -255,9 +257,33 @@ function sortByCategories() {
 function sortByFirstName() {
   let studentsList = allStudents.slice(0);
 
-  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
-    return currentStudent.firstName > nextStudent.firstName;
-  });
+  let sortedStudentsList;
+
+  if(sortType == 'ascending') {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.firstName > nextStudent.firstName) {
+        return 1;
+      } else if(currentStudent.firstName == nextStudent.firstName) {
+        return currentStudent.lastName > nextStudent.lastName;
+      }
+      
+      return -1;
+    });
+
+    sortType = 'descending';
+  } else {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.firstName < nextStudent.firstName) {
+        return 1;
+      } else if(currentStudent.firstName == nextStudent.firstName) {
+        return currentStudent.lastName < nextStudent.lastName;
+      }
+
+      return -1;
+    });
+
+    sortType = 'ascending';
+  }
 
   let sortedByFirstNames = [];
 
