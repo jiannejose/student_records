@@ -54,7 +54,7 @@ function formatDate(date) {
     "August", "September", "October",
     "November", "December"
   ];
-
+  
   var day = date.getDate();
   var monthIndex = date.getMonth();
   var year = date.getFullYear();
@@ -155,7 +155,7 @@ function editDataFormat(student) {
 
     <td>
         <form>
-            <input type="date" value="${formatDate(student.dob)}" class="edit_dob"/>
+            <input type="date" value="${student.dob.toISOString().substring(0, 10)}" class="edit_dob"/>
         </form>
     </td>
 
@@ -215,7 +215,7 @@ function updateStudentData() {
   allStudents[dataIndex].firstName = newFirstName;
   allStudents[dataIndex].lastName = newLastName;
   allStudents[dataIndex].gender = newGender;
-  allStudents[dataIndex].dob = newDob;
+  allStudents[dataIndex].dob = new Date(newDob);
   allStudents[dataIndex].age = newAge;
   allStudents[dataIndex].username = newUsername;
 
@@ -296,8 +296,6 @@ function sortByFirstName() {
   sortedByFirstNames.forEach((student) => {
     renderStudentData(student);
   });
-
-  console.log(sortedByFirstNames);
 }
 
 /* sorting by last name */
@@ -472,34 +470,34 @@ function sortByUsername() {
 
 
 
-function addTestData(firstName, lastName, gender, dob, age, username) {
-  allStudents.push({
-    id: nextId,
-    firstName: firstName,
-    lastName: lastName,
-    gender: gender,
-    dob: dob,
-    age: age,
-    username: username,
-  });
+// function addTestData(firstName, lastName, gender, dob, age, username) {
+//   allStudents.push({
+//     id: nextId,
+//     firstName: firstName,
+//     lastName: lastName,
+//     gender: gender,
+//     dob: dob,
+//     age: age,
+//     username: username,
+//   });
 
-  let dataIndex = allStudents.findIndex((student) => student.id ==  nextId);
-  renderTestData(allStudents[dataIndex]);
-  nextId++;
-}
+//   let dataIndex = allStudents.findIndex((student) => student.id ==  nextId);
+//   renderTestData(allStudents[dataIndex]);
+//   nextId++;
+// }
 
-function renderTestData(student) {
-  let newTr = document.createElement('tr');
-  newTr.setAttribute('data-id', student.id);
+// function renderTestData(student) {
+//   let newTr = document.createElement('tr');
+//   newTr.setAttribute('data-id', student.id);
 
-  newTr.innerHTML = studentDataFormat(student);
-  studentsTable.appendChild(newTr);
+//   newTr.innerHTML = studentDataFormat(student);
+//   studentsTable.appendChild(newTr);
 
-  rebindButtons(newTr);
-}
+//   rebindButtons(newTr);
+// }
 
-addTestData('Hermione', 'Granger', 'female', new Date('1991-03-28'), 27, 'wingardium' );
-addTestData('Harry', 'Potter', 'male', new Date('1989-01-28'), 29, 'avada' );
-addTestData('Ron', 'Weasley', 'male', new Date('1991-05-28'), 28, 'quiditch' );
-addTestData('Anne', 'Jose', 'female', new Date('1991-12-03'), 26, 'jianne' );
-addTestData('Ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
+// addTestData('Hermione', 'Granger', 'female', new Date('1991-03-28'), 27, 'wingardium' );
+// addTestData('Harry', 'Potter', 'male', new Date('1989-01-28'), 29, 'avada' );
+// addTestData('Ron', 'Weasley', 'male', new Date('1991-05-28'), 28, 'quiditch' );
+// addTestData('Anne', 'Jose', 'female', new Date('1991-12-03'), 26, 'jianne' );
+// addTestData('Ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
