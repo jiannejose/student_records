@@ -296,15 +296,41 @@ function sortByFirstName() {
   sortedByFirstNames.forEach((student) => {
     renderStudentData(student);
   });
+
+  console.log(sortedByFirstNames);
 }
 
 /* sorting by last name */
 function sortByLastName() {
   let studentsList = allStudents.slice(0);
 
-  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
-    return currentStudent.lastName > nextStudent.lastName;
-  });
+  let sortedStudentsList;
+
+  if(sortType == 'ascending') {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.lastName > nextStudent.lastName) {
+        return 1;
+      } else if(currentStudent.lastName == nextStudent.lastName) {
+        return currentStudent.firstName > nextStudent.firstName;
+      }
+
+      return -1;
+    });
+
+    sortType = 'descensing';
+  } else {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.lastName < nextStudent.lastName) {
+        return 1;
+      } else if(currentStudent.lastName == nextStudent.lastName) {
+        return currentStudent.firstName < nextStudent.firstName;
+      }
+  
+      return -1;  
+    });
+    
+    sortType = 'ascending';
+  }
 
   let sortedByLastNames = [];
 
@@ -323,8 +349,34 @@ function sortByLastName() {
 function sortByDob() {
   let studentsList = allStudents.slice(0);
 
-  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => currentStudent.dob > nextStudent.dob);
+  let sortedStudentsList;
 
+  if(sortType == 'ascending') {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.dob > nextStudent.dob) {
+        return 1;
+      } else if(currentStudent.dob == nextStudent.dob) {
+        return currentStudent.lastName > nextStudent.lastName;
+      }
+
+      return -1;  
+    });
+
+    sortType = 'descending'
+  } else {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.dob < nextStudent.dob) {
+        return 1;
+      } else if(currentStudent.dob == nextStudent.dob) {
+        return currentStudent.lastName < nextStudent.lastName;
+      }
+
+      return -1;
+    });
+
+    sortType = 'ascending';
+  }
+  
   let sortedByDob = [];
 
   sortedStudentsList.forEach((student) => {
@@ -342,9 +394,33 @@ function sortByDob() {
 function sortByAge() {
   let studentsList = allStudents.slice(0);
 
-  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
-    return currentStudent.age > nextStudent.age;
-  });
+  let sortedStudentsList;
+  
+  if(sortType == 'ascending') {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.age > nextStudent.age) {
+        return 1;
+      } else if(currentStudent.age == nextStudent.age) {
+        return currentStudent.lastName > nextStudent.lastName;
+      }
+
+      return -1;
+    });
+
+    sortType = 'descending';
+  } else {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      if(currentStudent.age < nextStudent.age) {
+        return 1;
+      } else if(currentStudent.age == nextStudent.age) {
+        return currentStudent.lastName < nextStudent.lastName;
+      }
+
+      return -1;
+    });
+
+    sortType = 'ascending';
+  }
 
   let sortedByAge = [];
 
@@ -363,9 +439,21 @@ function sortByAge() {
 function sortByUsername() {
   let studentsList = allStudents.slice(0);
 
-  let sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
-    return currentStudent.username > nextStudent.username;
-  });
+  let sortedStudentsList;
+
+  if(sortType == 'ascending') {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      return currentStudent.username > nextStudent.username;
+    });
+
+    sortType = 'descending';
+  } else {
+    sortedStudentsList = studentsList.sort((currentStudent, nextStudent) => {
+      return currentStudent.username < nextStudent.username;
+    });
+
+    sortType = 'ascending';
+  }
 
   let sortedByUsername = [];
 
