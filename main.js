@@ -504,16 +504,13 @@ addTestData('ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
 
 /* SEARCH START */
 let searchInput = document.getElementById('searchInput');
-let search = document.querySelector('.search-box');
 
-search.addEventListener('submit', searchStudent);
+searchInput.addEventListener('keyup', searchStudent);
 
 function searchStudent(e) {
   e.preventDefault();
 
   let searchingFor = searchInput.value.toUpperCase();
-
-  console.log(searchingFor);
 
   let foundStudents = allStudents.filter((student) => {
     if(student.firstName.toUpperCase().indexOf(searchingFor) > -1 ) {
@@ -543,8 +540,5 @@ function searchStudent(e) {
   foundStudents.forEach((student) => {
     renderStudentData(student);
   });
-
-
-  console.log(foundStudents);
 }
 /* SEARCH END */
