@@ -467,39 +467,39 @@ function sortByUsername() {
 }
 /* SORTING STUDENTS RECORDS END*/
 
-/* TEST DATA START */
-function addTestData(firstName, lastName, gender, dob, age, username) {
-  allStudents.push({
-    id: nextId,
-    firstName: firstName,
-    lastName: lastName,
-    gender: gender,
-    dob: dob,
-    age: age,
-    username: username,
-  });
+// /* TEST DATA START */
+// function addTestData(firstName, lastName, gender, dob, age, username) {
+//   allStudents.push({
+//     id: nextId,
+//     firstName: firstName,
+//     lastName: lastName,
+//     gender: gender,
+//     dob: dob,
+//     age: age,
+//     username: username,
+//   });
 
-  let dataIndex = allStudents.findIndex((student) => student.id ==  nextId);
-  renderTestData(allStudents[dataIndex]);
-  nextId++;
-}
+//   let dataIndex = allStudents.findIndex((student) => student.id ==  nextId);
+//   renderTestData(allStudents[dataIndex]);
+//   nextId++;
+// }
 
-function renderTestData(student) {
-  let newTr = document.createElement('tr');
-  newTr.setAttribute('data-id', student.id);
+// function renderTestData(student) {
+//   let newTr = document.createElement('tr');
+//   newTr.setAttribute('data-id', student.id);
 
-  newTr.innerHTML = studentDataFormat(student);
-  studentsTable.appendChild(newTr);
+//   newTr.innerHTML = studentDataFormat(student);
+//   studentsTable.appendChild(newTr);
 
-  rebindButtons(newTr);
-}
+//   rebindButtons(newTr);
+// }
 
-addTestData('Hermione', 'Granger', 'female', new Date('1991-03-28'), 27, 'wingardium' );
-addTestData('harry', 'potter', 'male', new Date('1989-01-28'), 29, 'avada' );
-addTestData('Ron', 'Weasley', 'male', new Date('1991-05-28'), 28, 'quiditch' );
-addTestData('anne', 'jose', 'female', new Date('1991-12-03'), 26, 'jianne' );
-addTestData('ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
-/* TEST DATA END */
+// addTestData('Hermione', 'Granger', 'female', new Date('1991-03-28'), 27, 'wingardium' );
+// addTestData('harry', 'potter', 'male', new Date('1989-01-28'), 29, 'avada' );
+// addTestData('Ron', 'Weasley', 'male', new Date('1991-05-28'), 28, 'quiditch' );
+// addTestData('anne', 'jose', 'female', new Date('1991-12-03'), 26, 'jianne' );
+// addTestData('ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
+// /* TEST DATA END */
 
 
 /* SEARCH START */
