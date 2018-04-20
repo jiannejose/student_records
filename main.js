@@ -465,11 +465,9 @@ function sortByUsername() {
     renderStudentData(student);
   });
 }
+/* SORTING STUDENTS RECORDS END*/
 
-
-
-
-
+/* TEST DATA START */
 function addTestData(firstName, lastName, gender, dob, age, username) {
   allStudents.push({
     id: nextId,
@@ -501,3 +499,52 @@ addTestData('harry', 'potter', 'male', new Date('1989-01-28'), 29, 'avada' );
 addTestData('Ron', 'Weasley', 'male', new Date('1991-05-28'), 28, 'quiditch' );
 addTestData('anne', 'jose', 'female', new Date('1991-12-03'), 26, 'jianne' );
 addTestData('ron', 'Cabal', 'male', new Date('1992-06-13'), 25, 'ronron' );
+/* TEST DATA END */
+
+
+/* SEARCH START */
+let searchInput = document.getElementById('searchInput');
+let search = document.querySelector('.search-box');
+
+search.addEventListener('submit', searchStudent);
+
+function searchStudent(e) {
+  e.preventDefault();
+
+  let searchingFor = searchInput.value.toUpperCase();
+
+  console.log(searchingFor);
+
+  let foundStudents = allStudents.filter((student) => {
+    if(student.firstName.toUpperCase().indexOf(searchingFor) > -1 ) {
+      return true;
+    }
+    
+    if(student.lastName.toUpperCase().indexOf(searchingFor) > -1 ) {
+      return true;
+    }
+
+    if(formatDate(student.dob).toUpperCase().indexOf(searchingFor) > -1 ) {
+      return true;
+    }
+
+    if(student.age.toString().indexOf(searchingFor) > -1 ) {
+      return true;
+    }
+
+    if(student.username.toUpperCase().indexOf(searchingFor) > -1 ) {
+      return true;
+    }
+
+  });
+
+  studentsTable.innerHTML = ''; 
+
+  foundStudents.forEach((student) => {
+    renderStudentData(student);
+  });
+
+
+  console.log(foundStudents);
+}
+/* SEARCH END */
